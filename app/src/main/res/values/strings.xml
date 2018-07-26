@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">BBChat</string>
     <string name="navigation_bar"></string>
+    <string name="tip_account_empty_toast">用户名不能为空1</string>
+    <string name="tip_account_regex_not_right_toast">手机号格式有问题！</string>
+    <string name="tip_password_can_not_be_empty_toast">密码不能为空！</string>
+    <!--<string name=""></string>-->
+    <!--<string name=""></string>-->
+    <!--<string name=""></string>-->
+    <!--<string name=""></string>-->
 </resources>
