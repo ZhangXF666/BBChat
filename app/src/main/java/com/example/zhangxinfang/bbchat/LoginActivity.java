@@ -33,12 +33,17 @@ import static com.example.zhangxinfang.bbchat.R.id.password;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
     private static final String TAG = "loginActivity";
+    private static final int REQUEST_CODE_TO_REGISTER = 0x001;
     //界面控件
     private EditText accountEdit;
     private EditText passwordEdit;
     private Button loginButton;
     private Button turnRegisteButton;
     private Button turnForgetPasswordButton;
+    String result = "";
+    // 整个平台的Controller，负责管理整个SDK的配置、操作等处理
+//    private UMSocialService mController = UMServiceFactory
+//            .getUMSocialService(AppConstants.DESCRIPTOR);
 
 
     @Override
@@ -53,8 +58,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         loginButton.setOnClickListener(this);
 
         accountEdit = this.findViewById(R.id.account);
-        accountEdit.setImeOptions(EditorInfo.IME_ACTION_NEXT);//???
-        accountEdit.setTransformationMethod(HideReturnsTransformationMethod.getInstance());//???
+        accountEdit.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        accountEdit.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 
         passwordEdit = this.findViewById(R.id.password);
         passwordEdit.setImeOptions(EditorInfo.IME_ACTION_DONE);//完成
@@ -85,12 +90,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         public void handleMessage(Message msg) {
                             if (msg.what == 1) {
                                 Toast.makeText(LoginActivity.this, result, Toast.LENGTH_LONG).show();
-                                TextUtils.showShort(LoginActivity.this, result);
+//                                TextUtils.showShort(LoginActivity.this, result);
                                 if (result.contains("|")) {
-                                    Toast.makeText(LoginActivity.this, result, Toast.LENGTH_LONG).show();
-                                    ToastUtils.showShort(LoginActivity.this, "密码错误......");
+                                    Toast.makeText(LoginActivity.this, "密码错误......", Toast.LENGTH_LONG).show();
+
                                 } else {
-                                    final Intent it = new Intent(LoginActivity.this, WelcomActivity.class); //你要转向的Activity
+                                    final Intent it = new Intent(LoginActivity.this, HomepageActivity.class); //你要转向的Activity
                                     Timer timer = new Timer();
                                     TimerTask task = new TimerTask() {
                                         @Override
@@ -134,10 +139,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             connection.setRequestProperty("json", "application/x-www-form-urlencoded");
             connection.setRequestProperty("Charset", "utf-8");
             //提交数据
-            String data = "&passwd=" + URLEncoder.encode(passWord, "UTF-8")+ "&number=" + URLEncoder.encode(account, "UTF-8")+ "&cardid=";//传递的数据
+            String data = "&passwd=" + URLEncoder.encode(password, "UTF-8")+ "&number=" + URLEncoder.encode(account, "UTF-8")+ "&cardid=";//传递的数据
             connection.setRequestProperty("Content-Length",String.valueOf(data.getBytes().length));
-            ToastUtils.showShort(this,
-                    "数据提交成功......");
+            Toast.makeText(this,"数据提交成功......",Toast.LENGTH_LONG).show();
+//            ToastUtils.showShort(this, "数据提交成功......");
             //获取输出流
             OutputStream os = connection.getOutputStream();
             os.write(data.getBytes());
@@ -206,6 +211,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void enterRegister() {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivityForResult(intent, REQUEST_CODE_TO_REGISTER);
+
     }
     /**
      * 跳转到忘记密码
@@ -213,6 +219,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void enterForgetPwd() {
         Intent intent = new Intent(this, ForgetPasswordActivity.class);
         startActivity(intent);
+
     }
 
 }

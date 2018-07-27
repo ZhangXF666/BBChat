@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src=""
+
             android:background="#418d8ff9"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
@@ -70,7 +70,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             android:background="#a9fafafa"
-            android:src=""
+
             />
         <TextView
             android:layout_width="match_parent"
@@ -94,7 +94,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             android:background="#a9fafafa"
-            android:src=""
+
             />
         <TextView
             android:layout_width="match_parent"
