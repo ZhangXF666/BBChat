@@ -2,7 +2,6 @@ package com.example.zhangxinfang.bbchat;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.wifi.aware.DiscoverySession;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,7 +24,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -42,7 +40,7 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signup);
+        setContentView(R.layout.activity_signup);
         initViews();
 
     }

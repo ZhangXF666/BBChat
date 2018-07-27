@@ -56,6 +56,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void initViews() {
         loginButton = findViewById(R.id.btn_login);
         loginButton.setOnClickListener(this);
+        turnRegisteButton=findViewById(R.id.btn_turn_register);
+        turnRegisteButton.setOnClickListener(this);
+        turnForgetPasswordButton=findViewById(R.id.btn_turn_forget_password);
+        turnForgetPasswordButton.setOnClickListener(this);
 
         accountEdit = this.findViewById(R.id.account);
         accountEdit.setImeOptions(EditorInfo.IME_ACTION_NEXT);
@@ -189,7 +193,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick (View v){
-          Intent intent = null;
+//          Intent intent = null;
           switch (v.getId()){
               case R.id.btn_login:
                   clickLogin();
@@ -211,7 +215,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void enterRegister() {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivityForResult(intent, REQUEST_CODE_TO_REGISTER);
+        turnRegisteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
     }
     /**
      * 跳转到忘记密码
@@ -219,7 +228,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void enterForgetPwd() {
         Intent intent = new Intent(this, ForgetPasswordActivity.class);
         startActivity(intent);
+        turnForgetPasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
     }
 
 }
