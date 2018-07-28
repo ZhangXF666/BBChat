@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/home_title"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="44dp"
         android:orientation="horizontal">
         <TextView
             android:textColor="#ffffff"
@@ -22,96 +22,107 @@
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/home_viewpager"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_gravity="center">
-
+        android:layout_height="0dp"
+        android:layout_weight="1">
     </android.support.v4.view.ViewPager>
 
+    <!--<LinearLayout-->
+    <!--android:id="@+id/home_tab"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:orientation="horizontal"-->
+        <!--android:background="#e3a7b7e7">-->
+        <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/tayLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--app:tabIndicatorColor="#e38b97c1"-->
+        <!--/>-->
+    <!--</LinearLayout>-->
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tayLayout"
+
+
+
+    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:tabIndicatorColor="#e38b97c1"
-        />
+        android:layout_gravity="bottom"
+        android:background="#e1d8cfef"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
 
 
+        >
+        <LinearLayout
+            android:id="@+id/tab_message"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
 
-    <!--<LinearLayout-->
+            >
+            <TextView
+                android:id="@+id/text_message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="消息"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="#E1D8CFEF"
+                />
 
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="60dp"-->
-        <!--android:layout_gravity="bottom"-->
-        <!--android:background="#c8bac0d7"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:layout_marginBottom="5dp"-->
+        </LinearLayout>
+        <View
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="#e1b3a0e4"
+            android:layout_gravity="center_horizontal"
+            />
+        <LinearLayout
+            android:id="@+id/tab_frd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:id="@+id/text_frd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="联系人"
+                android:textSize="20dp"
 
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="#E1D8CFEF"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="#e1b3a0e4"
+            android:layout_gravity="center_horizontal"
+            />
+        <LinearLayout
+            android:id="@+id/tab_mine"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:id="@+id/text_mine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="我"
+                android:textSize="20dp"
 
-        <!--&gt;-->
-        <!--<LinearLayout-->
-            <!--android:id="@+id/tab_message"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_weight="1"-->
-            <!--&gt;-->
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:text="消息"-->
-                <!--android:textSize="20dp"-->
-                <!--android:textColor="#8c404b6f"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:gravity="center"-->
-                <!--/>-->
-
-        <!--</LinearLayout>-->
-        <!--<View-->
-            <!--android:layout_width="1dip"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="#878bacc1"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--/>-->
-        <!--<LinearLayout-->
-            <!--android:id="@+id/tab_frd"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_weight="1"-->
-            <!--&gt;-->
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:text="联系人"-->
-                <!--android:textSize="20dp"-->
-                <!--android:textColor="#8c404b6f"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:gravity="center"-->
-                <!--/>-->
-        <!--</LinearLayout>-->
-        <!--<View-->
-            <!--android:layout_width="1dip"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="#878bacc1"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--/>-->
-        <!--<LinearLayout-->
-            <!--android:id="@+id/tab_mine"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_weight="1"-->
-            <!--&gt;-->
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:text="我"-->
-                <!--android:textSize="20dp"-->
-                <!--android:textColor="#8c404b6f"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:gravity="center"-->
-                <!--/>-->
-        <!--</LinearLayout>-->
-    <!--</LinearLayout>-->
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="#E1D8CFEF" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

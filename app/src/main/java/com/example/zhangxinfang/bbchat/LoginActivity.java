@@ -3,16 +3,13 @@ package com.example.zhangxinfang.bbchat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,10 +23,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static com.example.zhangxinfang.bbchat.R.id.password;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
     private static final String TAG = "loginActivity";
@@ -40,6 +33,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private Button loginButton;
     private Button turnRegisteButton;
     private Button turnForgetPasswordButton;
+    private UserInfo userInfo;
+    private CheckBox CK_save, CK_auto;
+    private static final String USER_NAME = "account";
+    private static final String PASSWORD = "password";
+
+    private String account;
+    private String password;
     String result = "";
     // 整个平台的Controller，负责管理整个SDK的配置、操作等处理
 //    private UMSocialService mController = UMServiceFactory
@@ -54,8 +54,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void initViews() {
+//        CK_save = (CheckBox) findViewById(R.id.savePassword);
+//        CK_auto = (CheckBox) findViewById(R.id.autoLogin);
+
+        userInfo = new UserInfo(this);
         loginButton = findViewById(R.id.btn_login);
         loginButton.setOnClickListener(this);
+
         turnRegisteButton=findViewById(R.id.btn_turn_register);
         turnRegisteButton.setOnClickListener(this);
         turnForgetPasswordButton=findViewById(R.id.btn_turn_forget_password);
@@ -81,49 +86,67 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void clickLogin() {
-        String account = accountEdit.getText().toString();
-        String password = passwordEdit.getText().toString();
+        final String account = accountEdit.getText().toString();
+        final String password = passwordEdit.getText().toString();
         if (checkInput(account, password)) {
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //android4.0后的新的特性，网络数据请求时不能放在主线程中。
-                    //使用线程执行访问服务器，获取返回信息后通知主线程更新UI或者提示信息。
-                    final Handler handler = new Handler() {
-                        @Override
-                        public void handleMessage(Message msg) {
-                            if (msg.what == 1) {
-                                Toast.makeText(LoginActivity.this, result, Toast.LENGTH_LONG).show();
-//                                TextUtils.showShort(LoginActivity.this, result);
-                                if (result.contains("|")) {
-                                    Toast.makeText(LoginActivity.this, "密码错误......", Toast.LENGTH_LONG).show();
 
-                                } else {
-                                    final Intent it = new Intent(LoginActivity.this, HomepageActivity.class); //你要转向的Activity
-                                    Timer timer = new Timer();
-                                    TimerTask task = new TimerTask() {
-                                        @Override
-                                        public void run() {
-                                            startActivity(it); //执行
-                                        }
-                                    };
-                                    timer.schedule(task, 1000); //1秒后
-                                }
-                            }
-                        }
-                    };
-                    new Thread() {
-                        public void run() {
-                            try {
-                                Login(accountEdit.getText().toString(), passwordEdit.getText().toString());
-                            } catch (IOException | JSONException e) {
-                                e.printStackTrace();
-                            }
-                            Message m = new Message();
-                            m.what = 1;
-                            handler.sendMessage(m);
-                        }
-                    }.start();
+                    if (account.equals("123") && password.equals("123")) {
+//                    if (CK_save.isChecked()) {
+//                        userInfo.setUserInfo(USER_NAME, account);
+//                        userInfo.setUserInfo(PASSWORD, password);
+//                        userInfo.setUserInfo(ISSAVEPASS, true);
+//                    }
+//                    if (CK_auto.isChecked()) {
+//                        userInfo.setUserInfo(AUTOLOGIN, true);
+//
+//                    }
+                        Intent i = new Intent();
+                        i.setClass(LoginActivity.this,HomepageActivity.class);
+//                        Intent intent=new Intent(SignUpActivity.this,HomepageActivity.class);
+                        startActivity(i);
+
+                    }
+
+//                    //android4.0后的新的特性，网络数据请求时不能放在主线程中。
+//                    //使用线程执行访问服务器，获取返回信息后通知主线程更新UI或者提示信息。
+//                    final Handler handler = new Handler() {
+//                        @Override
+//                        public void handleMessage(Message msg) {
+//                            if (msg.what == 1) {
+//                                Toast.makeText(LoginActivity.this, result, Toast.LENGTH_LONG).show();
+////                                TextUtils.showShort(LoginActivity.this, result);
+//                                if (result.contains("|")) {
+//                                    Toast.makeText(LoginActivity.this, "密码错误......", Toast.LENGTH_LONG).show();
+//
+//                                } else {
+//                                    final Intent it = new Intent(LoginActivity.this, HomepageActivity.class); //你要转向的Activity
+//                                    Timer timer = new Timer();
+//                                    TimerTask task = new TimerTask() {
+//                                        @Override
+//                                        public void run() {
+//                                            startActivity(it); //执行
+//                                        }
+//                                    };
+//                                    timer.schedule(task, 1000); //1秒后
+//                                }
+//                            }
+//                        }
+//                    };
+//                    new Thread() {
+//                        public void run() {
+//                            try {
+//                                Login(accountEdit.getText().toString(), passwordEdit.getText().toString());
+//                            } catch (IOException | JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                            Message m = new Message();
+//                            m.what = 1;
+//                            handler.sendMessage(m);
+//                        }
+//                    }.start();
                 }
             });
 
