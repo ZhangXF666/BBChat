@@ -258,8 +258,8 @@ public class HomepageActivity extends FragmentActivity implements View.OnClickLi
     private void initData() {
         mFragments = new ArrayList<>();
         //将四个Fragment加入集合中
-        mFragments.add(new MineFragment());
-        mFragments.add(new MineFragment());
+        mFragments.add(new MessageFragment());
+        mFragments.add(new FrdFragment());
         mFragments.add(new MineFragment());
 
 
